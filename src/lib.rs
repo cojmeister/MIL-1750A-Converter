@@ -17,7 +17,7 @@ use half::f16;
 ///
 /// ```
 /// use half::f16;
-/// use MIL1750A_Conversion::f16_to_1750a;
+/// use MIL1750A_Converter::f16_to_1750a;
 /// assert_eq!(f16_to_1750a(f16::from_f32(25.63)), 0x6685);
 /// ```
 pub fn f16_to_1750a(input: f16) -> u16 {
@@ -48,7 +48,7 @@ pub fn f16_to_1750a(input: f16) -> u16 {
 /// # Examples
 ///
 /// ```
-/// use MIL1750A_Conversion::f32_to_1750a;
+/// use MIL1750A_Converter::f32_to_1750a;
 /// assert_eq!(f32_to_1750a(5.234), 0x53BE7703);
 /// ```
 pub fn f32_to_1750a(input: f32) -> u32 {
@@ -56,7 +56,7 @@ pub fn f32_to_1750a(input: f32) -> u32 {
         return 0;
     }
 
-    let mut exponent = (input.abs().log2()).ceil() as i32;
+    let mut exponent = input.abs().log2().ceil() as i32;
     let mut mantissa = (input * 2f32.powi(23 - exponent)).round() as i32;
 
     // Boundary check
@@ -87,7 +87,7 @@ pub fn f32_to_1750a(input: f32) -> u32 {
 /// # Examples
 ///
 /// ```
-/// use MIL1750A_Conversion::f48_to_1750a;
+/// use MIL1750A_Converter::f48_to_1750a;
 /// assert_eq!(f48_to_1750a(105.639485637361), 0x69A3B50754AB);
 /// ```
 pub fn f48_to_1750a(input: f64) -> u64 {
@@ -95,7 +95,7 @@ pub fn f48_to_1750a(input: f64) -> u64 {
         return 0;
     }
 
-    let mut exponent = (input.abs().log2()).ceil() as i32;
+    let mut exponent = input.abs().log2().ceil() as i32;
     let mut mantissa = (input * 2f64.powi(39 - exponent)).round() as i64;
 
     // Boundary check
@@ -132,7 +132,7 @@ pub fn f48_to_1750a(input: f64) -> u64 {
 ///
 /// ```
 /// use half::f16;
-/// use MIL1750A_Conversion::m1750a_to_16flt;
+/// use MIL1750A_Converter::m1750a_to_16flt;
 /// assert_eq!(m1750a_to_16flt(0x6344), f16::from_f32(12.40625));
 /// ```
 pub fn m1750a_to_16flt(input: u16) -> f16 {
@@ -153,7 +153,7 @@ pub fn m1750a_to_16flt(input: u16) -> f16 {
 /// # Examples
 ///
 /// ```
-/// use MIL1750A_Conversion::m1750a_to_32flt;
+/// use MIL1750A_Converter::m1750a_to_32flt;
 /// assert_eq!(m1750a_to_32flt(0x997AE105), -25.6300010681152);
 /// ```
 pub fn m1750a_to_32flt(input: u32) -> f32 {
@@ -181,7 +181,7 @@ pub fn m1750a_to_32flt(input: u32) -> f32 {
 /// # Examples
 ///
 /// ```
-/// use MIL1750A_Conversion::m1750a_to_48flt;
+/// use MIL1750A_Converter::m1750a_to_48flt;
 /// assert_eq!(m1750a_to_48flt(0x69A3B50754AB), 105.63948563742451);
 /// ```
 pub fn m1750a_to_48flt(input: u64) -> f64 {
