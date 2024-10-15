@@ -1,0 +1,9 @@
+[package]
+name = "MIL1750A-Converter"
+version = "0.1.0"
+edition = "2021"
+license = "MIT"
+description = "Use this tool to convert to and from MIL-1750A"
+
+[dependencies]
+half = "2.4.1"
