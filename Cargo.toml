@@ -4,6 +4,7 @@ version = "0.1.0"
 edition = "2021"
 license = "MIT"
 description = "Use this tool to convert to and from MIL-1750A"
+repository = "https://github.com/cojmeister/MIL-1750A-Converter"
 
 [dependencies]
 half = "2.4.1"
